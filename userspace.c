@@ -7,6 +7,21 @@
 
 int main()
 {
+    char * rtstr[67];
+    char * rtstr2[67];
+    char * ent[34];
+    long rtnice1 =0;
+    long rtnice2 =0;
+    printf("rtnice of parent/process1:");
+    gets(rtstr);
+    gets(ent);
+    printf("rtnice of child/process2:");
+    gets(rtstr2);
+
+    rtnice1 = atoi(rtstr);
+    rtnice2 = atoi(rtstr2);
+    
+
     long int pid=fork();
     
     
@@ -14,10 +29,10 @@ int main()
     {
         printf("1st Process PID =  %ld\n",getpid());
         printf("2nd Process PID =  %ld\n",pid);
-        printf("Process 1 rt_nice = 0\n");
+        printf("Process 1 rt_nice = 100\n");
         printf("Process 2 rt_nice = 200 \n");
 	syscall(323,pid,200);//Child
-	//syscall(323,getpid(),0);//Parent
+	syscall(323,getpid(),100);//Parent
         
     }
 
@@ -29,7 +44,7 @@ int main()
         long sum=0;
         long i = 0;
 	long total =0;
-        for(i=1;i<5000000000;i++)
+        for(i=1;i<1000000000;i++)
         {
             if(i%2==0)
 		total++;
@@ -48,7 +63,7 @@ int main()
         long sum=0;
         long i = 0;
 	long total =0;
-        for(i=1;i<1000000000;i++)
+        for(i=1;i<5000000000;i++)
         {
             if(i%2==0)
 		total++;
