@@ -31,8 +31,8 @@ int main()
         printf("2nd Process PID =  %ld\n",pid);
         printf("Process 1 rt_nice = 100\n");
         printf("Process 2 rt_nice = 200 \n");
-	syscall(323,pid,200);//Child
-	syscall(323,getpid(),100);//Parent
+	syscall(323,pid,rtnice2);//Child
+	syscall(323,getpid(),rtnice1);//Parent
         
     }
 
